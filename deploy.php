@@ -24,7 +24,7 @@ set('allow_anonymous_stats', false);
 // Hosts
 
 host('root@35.246.253.180')
-    ->set('deploy_path', '/var/www/{{application}}');
+    ->set('deploy_path', '/var/www/html/{{application}}');
 
 
 // Composer
