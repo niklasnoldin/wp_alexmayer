@@ -1,0 +1,54 @@
+#leistungen {
+  @extend %maxwidthcontainer;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  h2 {
+    flex-basis: 100%;
+  }
+
+  article {
+    flex: 0 1 calc(14em + 4vw);
+    padding: $standardp $standardp * 1.5;
+    border-radius: 5px;
+    margin: 0 $standardp $standardp 0; 
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    &:nth-of-type(1) {
+      background: $yellow;
+    }
+    &:nth-of-type(2) {
+      background: $blue;
+    }
+    &:nth-of-type(3) {
+      background: $green;
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: $standardp / 2;
+    }
+
+    img {
+      width: 100%;
+      max-height: calc(10em + 4vw);
+    }
+  }
+
+  @include breakpoint(0, 740) {
+    display: block;
+    article {
+      // max-width: 20em;
+      display: inline-block;
+      text-align: center;
+      margin-right: 0;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+}

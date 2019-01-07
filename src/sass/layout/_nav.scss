@@ -1,0 +1,145 @@
+nav {
+  font-size: $regular;
+  ul {
+    display: flex;
+    padding-top: 2.05rem;
+  } 
+
+  li {
+    padding-right: $standardp;
+    &.current-menu-item a {
+      color: $brandblue;
+      border-bottom: 1px solid $brandblue;
+    }
+  }
+  a {
+    color: $copy; 
+    &:hover {
+      color: $brandblue;
+    }
+  }
+}
+
+
+// Hamburger
+body {
+  -webkit-animation: bugfix infinite 1s;
+}
+
+@-webkit-keyframes bugfix {
+  from {
+    padding: 0;
+  }
+  to {
+    padding: 0;
+  }
+}
+
+nav {
+  // hide checkbox
+  input[type=checkbox] {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+
+  label {
+    display: none;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .hamburger {
+    display: none;
+    background-color: none;
+  }
+}
+
+/* small screens */
+@include breakpoint(0, 850)  {
+  nav {
+
+    ul {
+      position: absolute;
+      top: 3.6rem;
+      left: 0;
+      display: block;
+      width: 100%;
+      padding: 0;
+      list-style: none;
+      transform: translateY(calc(-100% - 3.6rem));
+      transition: all cubic-bezier(.42, .0, .58, 1.0) .3s;
+      opacity: .75;
+    }
+
+    li:first-of-type {
+      border-top: 1px solid gray;
+    }
+
+    li {
+      padding: 1.15em;
+      margin: 0;
+      background-color: white;
+      border-bottom: 1px solid gray;
+      transition: background-color .3s ease;
+      &:hover {
+        background-color: $brandblue;
+        cursor: pointer;
+        & a {
+          color: white;
+        }
+      }
+    }
+
+    a {
+      border-bottom: none !important;
+      display: inline-block;
+      width: 100%;
+      color: black;
+      &:hover {
+        color: white;
+      }
+    }
+
+    label {
+      position: absolute;
+      top: $standardp;
+      right: $standardp;
+      z-index: 10;
+      display: block;
+      width: 4em;
+      height: 3em;
+    }
+
+    input[type=checkbox]:checked ~ ul {
+      display: block;
+      transform: translateY(0);
+      opacity: .98;
+    }
+
+    .hamburger {
+      position: absolute;
+      top: 1.2rem;
+      right: $standardp / 2;
+      z-index: 5;
+      display: block;
+    }
+  }
+}
+
+@include breakpoint(0, 360) {
+  header  {
+    nav .hamburger, nav label {
+      top: 0.25rem;
+      right: 0.25rem;
+    }
+    h1 {
+      padding-top: 2rem;
+    }
+    ul {
+      top: 6.2em;
+      transform: translateY(calc(-100% - 6.2rem));
+    }
+  }
+}
+

@@ -1,0 +1,13 @@
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  h1 {
+    padding: $standardp 0 0 $standardp;
+    font-size: $xlarge;
+    a:hover {
+      border-bottom: none;
+    }
+  }
+}

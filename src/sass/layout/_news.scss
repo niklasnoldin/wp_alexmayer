@@ -1,0 +1,27 @@
+#news {
+ @extend %maxwidthcontainer;
+
+ article {
+   padding: $standardp/4 $standardp/2;
+   background: $red;
+   &:first-of-type {
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+     padding-top: $standardp/2;
+   }
+   &:last-of-type {
+     padding-bottom: $standardp/2;
+     border-bottom-left-radius: 5px;
+     border-bottom-right-radius: 5px;
+   }
+   h3, p {
+     display: inline-block;
+   }
+   p {
+     font-size: $medium;
+   }
+   p a:last-of-type {
+     font-size: $regular;
+   }
+ }
+}

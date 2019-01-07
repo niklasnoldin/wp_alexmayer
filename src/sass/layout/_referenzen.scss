@@ -1,0 +1,170 @@
+#referenzen {
+  @extend %maxwidthcontainer;
+  display: grid;
+  grid-template-columns: repeat(8, 10fr);
+  grid-template-rows: auto repeat(3,12em);
+  overflow: hidden;
+
+  h2 {
+    grid-row: 1;
+    grid-column: 1/-1;
+  }
+
+  img {
+    width: 100%;
+    padding: 1vh 1vh 0 1vh;
+    object-fit: cover;
+  }
+
+  p {
+    padding: 1vh;
+  }
+
+  blockquote p {
+    font-size: calc(#{$medium} + .25vw);
+    padding: 1vh;
+  }
+
+  article:nth-of-type(1) {
+    display: inherit;
+    background-color: $yellow;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: inherit;
+    grid-column: 1/4;
+    grid-row: 2/5;
+
+    img {
+      grid-column: 1/2;
+      grid-row: 2/3;
+      height: 12em;
+    }
+
+    p {
+      grid-column: 1/3;
+      grid-row: 3/4;
+      background-color: $yellow;
+      z-index: 1;
+    }
+
+    blockquote {
+      grid-column: 1/4;
+      grid-row: 4/5;
+      z-index: 1;
+      background: $yellow;
+    }
+  }
+
+  article:nth-of-type(2) {
+    display: inherit;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: inherit;
+    grid-column: 2/5;
+    grid-row: 2/5;
+    background: $blue;
+
+    img {
+      grid-column: 3/4;
+      grid-row: 2/5;
+      height: 12em;
+    }
+
+    p {
+      grid-column: 1/3;
+      grid-row: 2/3;
+      text-align: right;
+    }
+
+    blockquote {
+      grid-column: 2/4;
+      grid-row: 3/4;
+      align-self: center;
+    }
+  }
+
+  article:nth-of-type(3) {
+    display: inherit;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: inherit;
+    grid-column: 5/9;
+    grid-row: 2/5;
+    background: $green;
+
+    img {
+      grid-column: 2/5;
+      grid-row: 2/4;
+      height: 24em;
+      width: 100%;
+    }
+
+    p {
+      grid-column: 1/5;
+      grid-row: 4/5;
+      padding-top: 1em;
+      text-align: right;
+    }
+
+    blockquote {
+      grid-column: 1/5;
+      grid-row: 4/5;
+      padding-top: 1em;
+      padding: 0.5rem;
+      align-self: end;
+    }
+  }
+
+  .bluebox {
+    grid-column: 5/6;
+    grid-row: 2/4;
+    background-image: url('../images/quotation_mark.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: $brandblue;
+  }
+}
+
+@include breakpoint(0, 950) {
+  #referenzen {
+    display: block;
+    background: none;
+    margin: 0;
+    width: 100%;
+
+    article {
+      padding: 1rem;
+      img {
+        padding: 0 0 0.5rem !important;
+        height: 24em !important;
+      }
+    }
+
+    p {
+      padding: 0 0 0.5rem 0;
+      text-align: left !important;
+    }
+
+    blockquote p {
+      padding: 0;
+      font-size: $medium;
+    }
+
+    article:nth-of-type(2){
+      background: $blue;
+    }
+
+    article:nth-of-type(3) {
+      p  {
+        padding: 0 0 0.5rem 0;
+      }
+      blockquote {
+        padding: 0;
+      }
+    }
+
+  }
+
+  .bluebox {
+    width: 100%;
+    height: 12em;
+  }
+}
+
