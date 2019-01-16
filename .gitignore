@@ -1,6 +1,6 @@
 /node_modules/
 
-/public/wp-config.php
+**/wp-config.*
 
 # Created by https://www.gitignore.io/api/wordpress
 # Edit at https://www.gitignore.io/?templates=wordpress
