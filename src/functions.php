@@ -8,6 +8,7 @@ add_action( 'wp_enqueue_scripts', 'enqueue_scripts_and_styles' );
 
 function add_title_tag() {
     add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails' );
 }
 add_action( 'after_setup_theme', 'add_title_tag');
 ?>

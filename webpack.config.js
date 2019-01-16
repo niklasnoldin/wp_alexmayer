@@ -13,8 +13,8 @@ const themeFolder = `public/wp-content/themes/${themeName}`;
 const phpServerUrl = `${themeName}.localhost`
 
 // We have multiple PHP files. Let's not write a HtmlWebPackPlugin-block for each in the plugin section manually:
-var PHPfiles = glob.sync("src/*.php", []);
-var PHPCopyPlugins = PHPfiles.map(function(fileName) {
+var PHPfiles = glob.sync("src/**.php", []);
+var PHPCopyPlugins = PHPfiles.map(function (fileName) {
   return new HtmlWebpackPlugin({
     template: fileName,
     filename: fileName.replace('src/', ''),
@@ -24,7 +24,9 @@ var PHPCopyPlugins = PHPfiles.map(function(fileName) {
 });
 
 module.exports = {
-  entry: { main:'./src/index.js' },
+  entry: {
+    main: './src/index.js'
+  },
   output: {
     filename: '[name].[chunkhash].js',
     path: path.resolve(__dirname, themeFolder)
@@ -56,7 +58,8 @@ module.exports = {
           MiniCssExtractPlugin.loader, // extract CSS into separate file
           "css-loader", // translates CSS into CommonJS
           "postcss-loader", // autoprefixes CSS
-          { loader: "sass-loader", // compiles Sass to CSS, using Node Sass by default
+          {
+            loader: "sass-loader", // compiles Sass to CSS, using Node Sass by default
             options: {
               importer: globImporter() // allows you to use glob syntax, eg. @import 'layout/*';
             }
@@ -84,12 +87,12 @@ module.exports = {
           loader: 'html-loader'
         }]
       },
-      
+
       // compress and include images
       {
         test: /\.(png|svg|jpg|gif)$/,
-        use: [
-          { loader: 'file-loader',
+        use: [{
+            loader: 'file-loader',
             options: {
               name: '[name].[ext]',
               outputPath: 'images/'
@@ -140,14 +143,11 @@ module.exports = {
   plugins: [
 
     // Sync webpage via proxy-server
-    new BrowserSyncPlugin(
-      {
-        proxy: phpServerUrl 
-      },
-      {
-        // reload: false
-      }
-    ),
+    new BrowserSyncPlugin({
+      proxy: phpServerUrl
+    }, {
+      // reload: false
+    }),
     // clean themes' stylesheet and js-file before each build
     new CleanWebpackPlugin([
       `${themeFolder}/*.js`,
@@ -159,17 +159,24 @@ module.exports = {
       filename: 'style.[contenthash].css'
     }),
 
-    new CopyWebpackPlugin([
-      { from: 'src/favicons/*', 
+    new CopyWebpackPlugin([{
+        from: 'src/favicons/*',
         to: path.resolve(__dirname, themeFolder),
         flatten: true
       },
-      { from: 'src/style.css', 
+      {
+        from: 'src/style.css',
         to: path.resolve(__dirname, themeFolder),
         flatten: true
       },
-      { from: 'src/screenshot.png', 
+      {
+        from: 'src/screenshot.png',
         to: path.resolve(__dirname, themeFolder),
+        flatten: true
+      },
+      {
+        from: 'src/partials/*',
+        to: path.resolve(__dirname, themeFolder) + "/partials/",
         flatten: true
       }
     ])
